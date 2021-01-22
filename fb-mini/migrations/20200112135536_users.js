@@ -10,7 +10,14 @@ exports.up = async knex => knex.schema.createTable('users', table => {
     .unique()
     .notNullable()
 
-  table.timestamps(true)
+  table
+    .string('password')
+    .notNullable()
+
+  table.string('first_name')
+  table.string('last_name')
+  table.string('date_of_birth')
+  table.string('bio')
 })
 
 exports.down = async knex => knex.schema.dropTableIfExists('users')
